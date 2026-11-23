@@ -155,7 +155,8 @@ const App = {
             this.openModal('manualAttendanceModal');
         });
         document.getElementById('openAddEquipmentModalBtn')?.addEventListener('click', () => this.openModal('addEquipmentModal'));
-        document.getElementById('openRecordPaymentModalBtn')?.addEventListener('click', () => this.openModal('addMemberModal'));
+        document.getElementById('topUpiQrBtn')?.addEventListener('click', () => this.openUpiModal({ custom: true }));
+        document.getElementById('openRecordPaymentModalBtn')?.addEventListener('click', () => this.openUpiModal({ custom: true }));
 
         // Close buttons
         document.querySelectorAll('.modal-close, [data-close]').forEach(btn => {
@@ -180,7 +181,12 @@ const App = {
 
     closeModal(id) {
         const modal = document.getElementById(id);
-        if (modal) modal.classList.remove('active');
+        if (modal) {
+            modal.classList.remove('active');
+            if (id === 'upiPaymentModal') {
+                this.stopCameraScanning();
+            }
+        }
     },
 
     // --------------------------------------------------------------------------
@@ -850,6 +856,7 @@ const App = {
 
             tbody.innerHTML = data.data.map(p => {
                 const statusBadge = p.payment_status === 'Completed' ? 'badge-emerald' : (p.payment_status === 'Pending' ? 'badge-amber' : 'badge-danger');
+                const safeName = (p.member_name || '').replace(/'/g, "\\'");
                 return `
                     <tr>
                         <td>#${p.payment_id}</td>
@@ -862,10 +869,22 @@ const App = {
                         <td><span class="badge ${statusBadge}">${p.payment_status}</span></td>
                         <td class="text-right">
                             ${p.payment_status === 'Pending' ? `
-                                <button class="btn btn-sm btn-primary" onclick="App.markPaymentCompleted(${p.payment_id})">
-                                    <i class="fa-solid fa-check"></i> Collect
-                                </button>
-                            ` : `<span class="text-muted text-sm"><i class="fa-solid fa-circle-check text-success"></i> Settled</span>`}
+                                <div style="display: inline-flex; gap: 6px;">
+                                    <button class="btn btn-sm btn-primary" onclick="App.openUpiModal({ member_id: ${p.member_id}, membership_id: ${p.membership_id || 'null'}, amount: ${p.amount}, note: 'Gym Dues - ${safeName}' })" title="Scan with PhonePe/GPay/FamPay">
+                                        <i class="fa-solid fa-qrcode"></i> Scan & Pay
+                                    </button>
+                                    <button class="btn btn-sm btn-secondary" onclick="App.markPaymentCompleted(${p.payment_id})" title="Mark Paid Manually">
+                                        <i class="fa-solid fa-check"></i>
+                                    </button>
+                                </div>
+                            ` : `
+                                <div style="display: inline-flex; gap: 6px; align-items: center;">
+                                    <span class="text-muted text-sm"><i class="fa-solid fa-circle-check text-success"></i> Settled</span>
+                                    <button class="btn btn-sm btn-secondary" onclick="App.showReceiptModal(${p.payment_id}, '${p.transaction_id}', '${safeName}', ${p.amount})" title="View Receipt" style="padding: 2px 8px; font-size: 11px;">
+                                        <i class="fa-solid fa-receipt"></i>
+                                    </button>
+                                </div>
+                            `}
                         </td>
                     </tr>
                 `;
@@ -1604,7 +1623,342 @@ const App = {
         document.getElementById('paymentStatusFilter')?.addEventListener('change', () => this.loadPaymentsData());
         document.getElementById('paymentMethodFilter')?.addEventListener('change', () => this.loadPaymentsData());
 
+        // UPI QR & Scanner Event Listeners
+        document.getElementById('upiVerificationForm')?.addEventListener('submit', (e) => this.handleUpiVerificationSubmit(e));
+        document.getElementById('upiModalAmountInput')?.addEventListener('change', (e) => {
+            const amt = parseFloat(e.target.value) || 0;
+            const note = document.getElementById('upiModalNoteInput')?.value || '';
+            this.fetchAndRenderUpiQr(amt, note);
+        });
+
         this.setupReportTabs();
+    },
+
+    // --------------------------------------------------------------------------
+    // UPI QR SCANNER & OWNER TERMINAL (8168567208@fam)
+    // --------------------------------------------------------------------------
+    html5QrCodeInstance: null,
+
+    async openUpiModal(options = {}) {
+        const { member_id, membership_id, amount, note } = options;
+
+        // Reset views
+        this.switchUpiModalTab('qr');
+        const receiptScreen = document.getElementById('upiReceiptContent');
+        if (receiptScreen) receiptScreen.style.display = 'none';
+
+        // Populate member select
+        this.populateDropdown('upiModalMemberSelect', this.allMembers, 'member_id', 'full_name');
+
+        if (member_id) {
+            const memberSelect = document.getElementById('upiModalMemberSelect');
+            if (memberSelect) memberSelect.value = member_id;
+        }
+
+        const memIdInput = document.getElementById('upiModalMembershipId');
+        if (memIdInput) memIdInput.value = membership_id || '';
+
+        const amountInput = document.getElementById('upiModalAmountInput');
+        const payAmount = (amount !== undefined && amount !== null && amount !== '') ? Number(amount) : (amountInput?.value ? Number(amountInput.value) : 1500);
+        if (amountInput) amountInput.value = payAmount;
+
+        const noteInput = document.getElementById('upiModalNoteInput');
+        const payNote = note || 'FitTrack Gym Membership Fee';
+        if (noteInput) noteInput.value = payNote;
+
+        // Clear previous UTR input
+        const utrInput = document.getElementById('upiModalUtrInput');
+        if (utrInput) utrInput.value = '';
+
+        // Fetch and show dynamic QR for 8168567208@fam
+        await this.fetchAndRenderUpiQr(payAmount, payNote);
+
+        // Open Modal
+        this.openModal('upiPaymentModal');
+    },
+
+    async fetchAndRenderUpiQr(amount, note) {
+        try {
+            const amtVal = parseFloat(amount) || 1500;
+            const amtFormatted = amtVal.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            const amountDisplay = document.getElementById('upiModalAmountValue');
+            if (amountDisplay) amountDisplay.textContent = amtFormatted;
+
+            const res = await fetch(`/api/payments/upi-qr?amount=${encodeURIComponent(amtVal)}&note=${encodeURIComponent(note || 'FitTrack Gym Fee')}`);
+            const data = await res.json();
+            if (data.success) {
+                const qrImg = document.getElementById('upiModalQrImage');
+                if (qrImg) qrImg.src = data.qrCodeDataUrl;
+
+                const mobileLink = document.getElementById('upiDirectMobileLink');
+                if (mobileLink) mobileLink.href = data.intentUrl;
+            }
+        } catch (err) {
+            console.error('Failed to load UPI QR:', err);
+            this.showToast('Could not generate UPI QR Code', 'error');
+        }
+    },
+
+    copyOwnerUpiId() {
+        const upiId = '8168567208@fam';
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(upiId).then(() => {
+                this.showToast('Gym Owner UPI ID copied: ' + upiId, 'success');
+            }).catch(() => {
+                this.copyFallback(upiId);
+            });
+        } else {
+            this.copyFallback(upiId);
+        }
+    },
+
+    copyFallback(text) {
+        const temp = document.createElement('input');
+        temp.value = text;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        document.body.removeChild(temp);
+        this.showToast('Gym Owner UPI ID copied: ' + text, 'success');
+    },
+
+    generateSampleUtr() {
+        // Generate realistic 12-digit Indian UPI bank reference number
+        const prefix = '4'; 
+        let digits = prefix;
+        for (let i = 0; i < 11; i++) {
+            digits += Math.floor(Math.random() * 10);
+        }
+        const utrInput = document.getElementById('upiModalUtrInput');
+        if (utrInput) {
+            utrInput.value = digits;
+            this.showToast(`Test 12-digit UTR Generated: ${digits}`, 'info');
+        }
+    },
+
+    switchUpiModalTab(tab) {
+        const qrTab = document.getElementById('upiQrTabContent');
+        const scannerTab = document.getElementById('upiScannerTabContent');
+        const receiptTab = document.getElementById('upiReceiptContent');
+        const qrBtn = document.getElementById('upiTabQrModeBtn');
+        const scannerBtn = document.getElementById('upiTabScannerModeBtn');
+
+        if (receiptTab) receiptTab.style.display = 'none';
+
+        if (tab === 'qr') {
+            if (qrTab) qrTab.style.display = 'block';
+            if (scannerTab) scannerTab.style.display = 'none';
+            if (qrBtn) { qrBtn.className = 'btn btn-sm btn-primary'; }
+            if (scannerBtn) { scannerBtn.className = 'btn btn-sm btn-secondary'; }
+            this.stopCameraScanning();
+        } else if (tab === 'scanner') {
+            if (qrTab) qrTab.style.display = 'none';
+            if (scannerTab) scannerTab.style.display = 'block';
+            if (qrBtn) { qrBtn.className = 'btn btn-sm btn-secondary'; }
+            if (scannerBtn) { scannerBtn.className = 'btn btn-sm btn-primary'; }
+        }
+    },
+
+    async startCameraScanning() {
+        const startBtn = document.getElementById('startCameraBtn');
+        const stopBtn = document.getElementById('stopCameraBtn');
+        const feedback = document.getElementById('scannerFeedbackBox');
+
+        if (typeof Html5Qrcode === 'undefined') {
+            this.showToast('Scanner engine initializing... please try again.', 'error');
+            return;
+        }
+
+        try {
+            if (!this.html5QrCodeInstance) {
+                this.html5QrCodeInstance = new Html5Qrcode("qr-reader");
+            }
+
+            const qrCodeSuccessCallback = (decodedText) => {
+                this.handleDecodedQr(decodedText);
+            };
+
+            const config = { fps: 10, qrbox: { width: 250, height: 250 } };
+
+            await this.html5QrCodeInstance.start(
+                { facingMode: "environment" },
+                config,
+                qrCodeSuccessCallback
+            );
+
+            if (startBtn) startBtn.style.display = 'none';
+            if (stopBtn) stopBtn.style.display = 'inline-flex';
+            if (feedback) {
+                feedback.style.display = 'block';
+                feedback.innerHTML = '<span class="text-cyan"><i class="fa-solid fa-spinner fa-spin"></i> Camera live. Align QR receipt within view...</span>';
+            }
+        } catch (err) {
+            console.error('Camera scan error:', err);
+            this.showToast('Camera unavailable or permission denied.', 'error');
+            if (feedback) {
+                feedback.style.display = 'block';
+                feedback.innerHTML = `<span class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Camera not accessible: ${err.message || err}. You can also upload a payment screenshot below.</span>`;
+            }
+        }
+    },
+
+    async stopCameraScanning() {
+        const startBtn = document.getElementById('startCameraBtn');
+        const stopBtn = document.getElementById('stopCameraBtn');
+        const feedback = document.getElementById('scannerFeedbackBox');
+
+        if (this.html5QrCodeInstance) {
+            try {
+                if (this.html5QrCodeInstance.isScanning) {
+                    await this.html5QrCodeInstance.stop();
+                }
+            } catch (err) {
+                console.warn('Error stopping scanner:', err);
+            }
+        }
+        if (startBtn) startBtn.style.display = 'inline-flex';
+        if (stopBtn) stopBtn.style.display = 'none';
+        if (feedback) feedback.style.display = 'none';
+    },
+
+    async scanFileReceipt(input) {
+        if (!input.files || input.files.length === 0) return;
+        const file = input.files[0];
+        const feedback = document.getElementById('scannerFeedbackBox');
+
+        try {
+            if (!this.html5QrCodeInstance) {
+                this.html5QrCodeInstance = new Html5Qrcode("qr-reader");
+            }
+            if (feedback) {
+                feedback.style.display = 'block';
+                feedback.innerHTML = '<span class="text-cyan"><i class="fa-solid fa-spinner fa-spin"></i> Analyzing transaction image...</span>';
+            }
+
+            const decodedText = await this.html5QrCodeInstance.scanFile(file, true);
+            this.handleDecodedQr(decodedText);
+        } catch (err) {
+            console.error('File scan error:', err);
+            if (feedback) {
+                feedback.style.display = 'block';
+                feedback.innerHTML = `<span class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> No readable QR found in screenshot. Please verify image or type 12-digit UTR directly.</span>`;
+            }
+        } finally {
+            input.value = '';
+        }
+    },
+
+    handleDecodedQr(rawText) {
+        this.stopCameraScanning();
+        let utrFound = '';
+        let amountFound = '';
+
+        if (rawText.startsWith('upi://pay')) {
+            try {
+                const url = new URL(rawText.replace('upi://pay', 'http://upi'));
+                amountFound = url.searchParams.get('am');
+                utrFound = url.searchParams.get('tr') || url.searchParams.get('refId') || '';
+            } catch (e) {
+                console.warn('UPI url parse warning:', e);
+            }
+        } else {
+            const match = rawText.match(/\b\d{12}\b/);
+            if (match) {
+                utrFound = match[0];
+            } else {
+                utrFound = rawText.replace(/[^a-zA-Z0-9]/g, '').slice(0, 16);
+            }
+        }
+
+        if (utrFound) {
+            const utrInput = document.getElementById('upiModalUtrInput');
+            if (utrInput) utrInput.value = utrFound;
+        }
+
+        if (amountFound) {
+            const amtInput = document.getElementById('upiModalAmountInput');
+            if (amtInput) amtInput.value = amountFound;
+            const amtDisp = document.getElementById('upiModalAmountValue');
+            if (amtDisp) amtDisp.textContent = Number(amountFound).toLocaleString('en-IN', { minimumFractionDigits: 2 });
+        }
+
+        this.switchUpiModalTab('qr');
+        this.showToast('Scanned details captured! Confirm payment to credit Gym Owner.', 'success');
+    },
+
+    async handleUpiVerificationSubmit(e) {
+        e.preventDefault();
+        const member_id = document.getElementById('upiModalMemberSelect')?.value;
+        const membership_id = document.getElementById('upiModalMembershipId')?.value || null;
+        const amount = document.getElementById('upiModalAmountInput')?.value;
+        const utr_number = document.getElementById('upiModalUtrInput')?.value;
+        const notes = document.getElementById('upiModalNoteInput')?.value;
+
+        if (!member_id) {
+            this.showToast('Please select a member', 'error');
+            return;
+        }
+        if (!utr_number || utr_number.trim().length < 6) {
+            this.showToast('Please enter a valid 12-digit UPI UTR / Reference number', 'error');
+            return;
+        }
+
+        try {
+            const res = await fetch('/api/payments/verify-upi', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    member_id: parseInt(member_id),
+                    membership_id: membership_id ? parseInt(membership_id) : null,
+                    amount: parseFloat(amount),
+                    utr_number: utr_number.trim(),
+                    notes
+                })
+            });
+
+            const data = await res.json();
+            if (data.success) {
+                this.showToast(data.message, 'success');
+
+                // Render Payment Receipt View
+                document.getElementById('upiQrTabContent').style.display = 'none';
+                document.getElementById('upiScannerTabContent').style.display = 'none';
+                const receiptScreen = document.getElementById('upiReceiptContent');
+                if (receiptScreen) receiptScreen.style.display = 'block';
+
+                document.getElementById('receiptTxnId').textContent = data.data.transaction_id;
+                document.getElementById('receiptUtrNo').textContent = data.data.utr_number;
+                document.getElementById('receiptMemberName').textContent = data.data.member_name;
+                document.getElementById('receiptAmount').textContent = Number(data.data.amount).toLocaleString('en-IN', { minimumFractionDigits: 2 });
+
+                // Refresh app data
+                this.loadPaymentsData();
+                this.loadMembersTable();
+                this.loadMembershipsData();
+                this.loadDashboardData();
+            } else {
+                this.showToast(data.error || 'Payment verification failed', 'error');
+            }
+        } catch (err) {
+            this.showToast(err.message, 'error');
+        }
+    },
+
+    showReceiptModal(paymentId, txnId, memberName, amount) {
+        document.getElementById('upiQrTabContent').style.display = 'none';
+        document.getElementById('upiScannerTabContent').style.display = 'none';
+        const receiptScreen = document.getElementById('upiReceiptContent');
+        if (receiptScreen) receiptScreen.style.display = 'block';
+
+        const txnStr = String(txnId || '');
+        const utrVal = txnStr.startsWith('UPI-') ? txnStr.replace('UPI-', '') : txnStr;
+
+        document.getElementById('receiptTxnId').textContent = txnStr;
+        document.getElementById('receiptUtrNo').textContent = utrVal;
+        document.getElementById('receiptMemberName').textContent = memberName;
+        document.getElementById('receiptAmount').textContent = Number(amount).toLocaleString('en-IN', { minimumFractionDigits: 2 });
+
+        this.openModal('upiPaymentModal');
     }
 };
 
