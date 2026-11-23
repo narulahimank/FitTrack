@@ -86,23 +86,56 @@ async function getActiveConnection() {
     }
 }
 
+const fallbackStore = require('./fallback_store');
+
 // Proxy wrapper so existing db.query() and db.getConnection() work seamlessly
 const dbProxy = {
     async query(sql, params) {
+        // If running on Vercel without a cloud database host, use the pre-seeded store
+        if (process.env.VERCEL && !process.env.DATABASE_URL && (!process.env.DB_HOST || process.env.DB_HOST === 'localhost' || process.env.DB_HOST === '127.0.0.1')) {
+            return fallbackStore.queryFallback(sql, params);
+        }
+
         try {
             return await activePool.query(sql, params);
         } catch (err) {
             // Attempt auto-switch on connection failure
-            if (err.code === 'ECONNREFUSED' || err.code === 'ENOTFOUND') {
-                const conn = await getActiveConnection();
-                conn.release();
-                return await activePool.query(sql, params);
+            if (err.code === 'ECONNREFUSED' || err.code === 'ENOTFOUND' || err.code === 'ETIMEDOUT') {
+                try {
+                    const conn = await getActiveConnection();
+                    conn.release();
+                    return await activePool.query(sql, params);
+                } catch (fallbackErr) {
+                    console.log('  ℹ️  Cloud fallback activated for query:', sql.slice(0, 40) + '...');
+                    return fallbackStore.queryFallback(sql, params);
+                }
             }
             throw err;
         }
     },
     async getConnection() {
-        return await getActiveConnection();
+        if (process.env.VERCEL && !process.env.DATABASE_URL && (!process.env.DB_HOST || process.env.DB_HOST === 'localhost' || process.env.DB_HOST === '127.0.0.1')) {
+            return {
+                query: (sql, params) => fallbackStore.queryFallback(sql, params),
+                beginTransaction: async () => {},
+                commit: async () => {},
+                rollback: async () => {},
+                release: () => {}
+            };
+        }
+
+        try {
+            return await getActiveConnection();
+        } catch (err) {
+            console.log('  ℹ️  Cloud fallback connection granted.');
+            return {
+                query: (sql, params) => fallbackStore.queryFallback(sql, params),
+                beginTransaction: async () => {},
+                commit: async () => {},
+                rollback: async () => {},
+                release: () => {}
+            };
+        }
     },
     get activePort() {
         return activePool?.pool?.config?.connectionConfig?.port || 3307;

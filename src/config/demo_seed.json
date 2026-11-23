@@ -1,0 +1,1224 @@
+{
+  "members": [
+    {
+      "member_id": 1,
+      "first_name": "Aarav",
+      "last_name": "Patel",
+      "email": "aarav.patel@gmail.com",
+      "phone": "+91 91234 56780",
+      "gender": "Male",
+      "dob": "1998-05-13T18:30:00.000Z",
+      "emergency_contact": "+91 98111 22334",
+      "address": "Flat 402, Sunshine Heights, Mumbai",
+      "joined_date": "2026-05-13T18:30:00.000Z",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z",
+      "updated_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "member_id": 2,
+      "first_name": "Sneha",
+      "last_name": "Kulkarni",
+      "email": "sneha.k@yahoo.com",
+      "phone": "+91 91234 56781",
+      "gender": "Female",
+      "dob": "2001-11-19T18:30:00.000Z",
+      "emergency_contact": "+91 98222 33445",
+      "address": "B-12, Green Glen Layout, Bengaluru",
+      "joined_date": "2026-06-13T18:30:00.000Z",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z",
+      "updated_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "member_id": 3,
+      "first_name": "Karan",
+      "last_name": "Mehta",
+      "email": "karan.mehta@outlook.com",
+      "phone": "+91 91234 56782",
+      "gender": "Male",
+      "dob": "1995-03-07T18:30:00.000Z",
+      "emergency_contact": "+91 98333 44556",
+      "address": "74 Park View Apartments, New Delhi",
+      "joined_date": "2026-07-13T18:30:00.000Z",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z",
+      "updated_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "member_id": 4,
+      "first_name": "Riya",
+      "last_name": "Sen",
+      "email": "riya.sen@gmail.com",
+      "phone": "+91 91234 56783",
+      "gender": "Female",
+      "dob": "1999-09-24T18:30:00.000Z",
+      "emergency_contact": "+91 98444 55667",
+      "address": "18 Lake Road, South Kolkata",
+      "joined_date": "2026-08-13T18:30:00.000Z",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z",
+      "updated_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "member_id": 5,
+      "first_name": "Arjun",
+      "last_name": "Reddy",
+      "email": "arjun.reddy@gmail.com",
+      "phone": "+91 91234 56784",
+      "gender": "Male",
+      "dob": "1992-07-11T18:30:00.000Z",
+      "emergency_contact": "+91 98555 66778",
+      "address": "Plot 88, Jubilee Hills, Hyderabad",
+      "joined_date": "2026-08-13T18:30:00.000Z",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z",
+      "updated_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "member_id": 6,
+      "first_name": "Neha",
+      "last_name": "Gupta",
+      "email": "neha.gupta@hotmail.com",
+      "phone": "+91 91234 56785",
+      "gender": "Female",
+      "dob": "1997-12-03T18:30:00.000Z",
+      "emergency_contact": "+91 98666 77889",
+      "address": "Tower 3, Cyber City, Gurugram",
+      "joined_date": "2026-10-19T18:30:00.000Z",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z",
+      "updated_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "member_id": 7,
+      "first_name": "Dev",
+      "last_name": "Malhotra",
+      "email": "dev.m@gmail.com",
+      "phone": "+91 91234 56786",
+      "gender": "Male",
+      "dob": "2000-01-17T18:30:00.000Z",
+      "emergency_contact": "+91 98777 88990",
+      "address": "C-104, Koregaon Park, Pune",
+      "joined_date": "2026-09-13T18:30:00.000Z",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z",
+      "updated_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "member_id": 8,
+      "first_name": "Tanvi",
+      "last_name": "Deshmukh",
+      "email": "tanvi.d@gmail.com",
+      "phone": "+91 91234 56787",
+      "gender": "Female",
+      "dob": "1996-08-29T18:30:00.000Z",
+      "emergency_contact": "+91 98888 99001",
+      "address": "Shivaji Nagar, Pune",
+      "joined_date": "2026-10-13T18:30:00.000Z",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z",
+      "updated_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "member_id": 9,
+      "first_name": "Kabir",
+      "last_name": "Khan",
+      "email": "kabir.khan@rediffmail.com",
+      "phone": "+91 91234 56788",
+      "gender": "Male",
+      "dob": "1991-04-15T18:30:00.000Z",
+      "emergency_contact": "+91 98999 00112",
+      "address": "Bandra West, Mumbai",
+      "joined_date": "2026-03-13T18:30:00.000Z",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z",
+      "updated_at": "2026-11-22T23:30:29.000Z"
+    },
+    {
+      "member_id": 10,
+      "first_name": "Ishita",
+      "last_name": "Bose",
+      "email": "ishita.bose@gmail.com",
+      "phone": "+91 91234 56789",
+      "gender": "Female",
+      "dob": "2002-02-27T18:30:00.000Z",
+      "emergency_contact": "+91 98000 11223",
+      "address": "Salt Lake Sector 2, Kolkata",
+      "joined_date": "2026-11-03T18:30:00.000Z",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z",
+      "updated_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "member_id": 11,
+      "first_name": "asdfgb",
+      "last_name": "asdfv",
+      "email": "asdfv@ggmail.com",
+      "phone": "asdfg",
+      "gender": "Male",
+      "dob": "2026-11-16T18:30:00.000Z",
+      "emergency_contact": "asdfv",
+      "address": "sdfv",
+      "joined_date": "2026-11-22T18:30:00.000Z",
+      "status": "Active",
+      "created_at": "2026-11-22T23:28:47.000Z",
+      "updated_at": "2026-11-22T23:28:47.000Z"
+    }
+  ],
+  "membership_plans": [
+    {
+      "plan_id": 1,
+      "plan_name": "Bronze Starter",
+      "description": "Access to gym equipment during standard hours (10 AM - 5 PM). Ideal for beginners.",
+      "duration_months": 1,
+      "fee": "1500.00",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "plan_id": 2,
+      "plan_name": "Silver Fitness",
+      "description": "All-day gym access, locker access, and 1 group fitness class per week.",
+      "duration_months": 3,
+      "fee": "3999.00",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "plan_id": 3,
+      "plan_name": "Gold Pro Athlete",
+      "description": "Full gym & cardio access, sauna, shower, 3 personal training sessions, free locker.",
+      "duration_months": 6,
+      "fee": "7499.00",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "plan_id": 4,
+      "plan_name": "Platinum Elite Annual",
+      "description": "Unlimited 24/7 access, unlimited group classes, steam room, diet consultation, 10 trainer sessions.",
+      "duration_months": 12,
+      "fee": "13999.00",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "plan_id": 5,
+      "plan_name": "Weekend Warrior",
+      "description": "Saturday and Sunday unlimited access including all weekend conditioning batches.",
+      "duration_months": 3,
+      "fee": "2499.00",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    }
+  ],
+  "memberships": [
+    {
+      "membership_id": 1,
+      "member_id": 1,
+      "plan_id": 4,
+      "start_date": "2026-05-13T18:30:00.000Z",
+      "end_date": "2027-05-13T18:30:00.000Z",
+      "total_amount": "13999.00",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "membership_id": 2,
+      "member_id": 2,
+      "plan_id": 3,
+      "start_date": "2026-06-13T18:30:00.000Z",
+      "end_date": "2026-12-13T18:30:00.000Z",
+      "total_amount": "7499.00",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "membership_id": 3,
+      "member_id": 3,
+      "plan_id": 2,
+      "start_date": "2026-09-13T18:30:00.000Z",
+      "end_date": "2026-12-13T18:30:00.000Z",
+      "total_amount": "3999.00",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "membership_id": 4,
+      "member_id": 4,
+      "plan_id": 3,
+      "start_date": "2026-08-13T18:30:00.000Z",
+      "end_date": "2027-02-13T18:30:00.000Z",
+      "total_amount": "7499.00",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "membership_id": 5,
+      "member_id": 5,
+      "plan_id": 4,
+      "start_date": "2026-08-13T18:30:00.000Z",
+      "end_date": "2027-08-13T18:30:00.000Z",
+      "total_amount": "13999.00",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "membership_id": 6,
+      "member_id": 6,
+      "plan_id": 1,
+      "start_date": "2026-10-19T18:30:00.000Z",
+      "end_date": "2026-11-18T18:30:00.000Z",
+      "total_amount": "1500.00",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "membership_id": 7,
+      "member_id": 7,
+      "plan_id": 2,
+      "start_date": "2026-09-13T18:30:00.000Z",
+      "end_date": "2026-12-13T18:30:00.000Z",
+      "total_amount": "3999.00",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "membership_id": 8,
+      "member_id": 8,
+      "plan_id": 3,
+      "start_date": "2026-10-13T18:30:00.000Z",
+      "end_date": "2027-04-13T18:30:00.000Z",
+      "total_amount": "7499.00",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "membership_id": 9,
+      "member_id": 9,
+      "plan_id": 1,
+      "start_date": "2026-05-13T18:30:00.000Z",
+      "end_date": "2026-06-13T18:30:00.000Z",
+      "total_amount": "1500.00",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "membership_id": 10,
+      "member_id": 10,
+      "plan_id": 2,
+      "start_date": "2026-11-03T18:30:00.000Z",
+      "end_date": "2027-02-01T18:30:00.000Z",
+      "total_amount": "3999.00",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    }
+  ],
+  "trainers": [
+    {
+      "trainer_id": 1,
+      "first_name": "Vikram",
+      "last_name": "Rathore",
+      "email": "vikram.rathore@fittrack.com",
+      "phone": "+91 98765 43210",
+      "specialization": "Bodybuilding & Hypertrophy",
+      "experience_years": 8,
+      "hourly_rate": "800.00",
+      "hire_date": "2024-11-13T18:30:00.000Z",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "trainer_id": 2,
+      "first_name": "Ananya",
+      "last_name": "Sharma",
+      "email": "ananya.sharma@fittrack.com",
+      "phone": "+91 98765 43211",
+      "specialization": "Weight Loss & Functional HIIT",
+      "experience_years": 5,
+      "hourly_rate": "650.00",
+      "hire_date": "2025-11-13T18:30:00.000Z",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "trainer_id": 3,
+      "first_name": "Marcus",
+      "last_name": "Fernandes",
+      "email": "marcus.f@fittrack.com",
+      "phone": "+91 98765 43212",
+      "specialization": "Powerlifting & Strength Conditioning",
+      "experience_years": 10,
+      "hourly_rate": "1000.00",
+      "hire_date": "2023-11-13T18:30:00.000Z",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "trainer_id": 4,
+      "first_name": "Priya",
+      "last_name": "Nair",
+      "email": "priya.nair@fittrack.com",
+      "phone": "+91 98765 43213",
+      "specialization": "Yoga, Mobility & Flexibility",
+      "experience_years": 6,
+      "hourly_rate": "600.00",
+      "hire_date": "2026-03-13T18:30:00.000Z",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "trainer_id": 5,
+      "first_name": "Rohit",
+      "last_name": "Verma",
+      "email": "rohit.v@fittrack.com",
+      "phone": "+91 98765 43214",
+      "specialization": "Cardiovascular Endurance & Marathon Coaching",
+      "experience_years": 4,
+      "hourly_rate": "550.00",
+      "hire_date": "2026-06-13T18:30:00.000Z",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    }
+  ],
+  "trainer_assignments": [
+    {
+      "assignment_id": 1,
+      "member_id": 1,
+      "trainer_id": 1,
+      "assigned_date": "2026-06-13T18:30:00.000Z",
+      "session_time": "Morning (06:30 - 07:30)",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "assignment_id": 2,
+      "member_id": 2,
+      "trainer_id": 2,
+      "assigned_date": "2026-07-13T18:30:00.000Z",
+      "session_time": "Evening (18:00 - 19:00)",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "assignment_id": 3,
+      "member_id": 3,
+      "trainer_id": 3,
+      "assigned_date": "2026-09-13T18:30:00.000Z",
+      "session_time": "Morning (08:00 - 09:00)",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "assignment_id": 4,
+      "member_id": 4,
+      "trainer_id": 4,
+      "assigned_date": "2026-08-13T18:30:00.000Z",
+      "session_time": "Evening (17:00 - 18:00)",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "assignment_id": 5,
+      "member_id": 5,
+      "trainer_id": 1,
+      "assigned_date": "2026-08-13T18:30:00.000Z",
+      "session_time": "Morning (07:30 - 08:30)",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "assignment_id": 6,
+      "member_id": 7,
+      "trainer_id": 2,
+      "assigned_date": "2026-09-13T18:30:00.000Z",
+      "session_time": "Evening (19:00 - 20:00)",
+      "status": "Active",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "assignment_id": 7,
+      "member_id": 9,
+      "trainer_id": 3,
+      "assigned_date": "2026-05-13T18:30:00.000Z",
+      "session_time": "Morning (09:00 - 10:00)",
+      "status": "Completed",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    }
+  ],
+  "attendance": [
+    {
+      "attendance_id": 1,
+      "member_id": 1,
+      "attendance_date": "2026-11-13T18:30:00.000Z",
+      "check_in_time": "06:45:00",
+      "check_out_time": "08:15:00",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "attendance_id": 2,
+      "member_id": 2,
+      "attendance_date": "2026-11-13T18:30:00.000Z",
+      "check_in_time": "07:10:00",
+      "check_out_time": "08:20:00",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "attendance_id": 3,
+      "member_id": 3,
+      "attendance_date": "2026-11-13T18:30:00.000Z",
+      "check_in_time": "08:00:00",
+      "check_out_time": "09:30:00",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "attendance_id": 4,
+      "member_id": 5,
+      "attendance_date": "2026-11-13T18:30:00.000Z",
+      "check_in_time": "07:30:00",
+      "check_out_time": null,
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "attendance_id": 5,
+      "member_id": 7,
+      "attendance_date": "2026-11-13T18:30:00.000Z",
+      "check_in_time": "08:15:00",
+      "check_out_time": null,
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "attendance_id": 6,
+      "member_id": 1,
+      "attendance_date": "2026-11-12T18:30:00.000Z",
+      "check_in_time": "06:50:00",
+      "check_out_time": "08:10:00",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "attendance_id": 7,
+      "member_id": 2,
+      "attendance_date": "2026-11-12T18:30:00.000Z",
+      "check_in_time": "07:05:00",
+      "check_out_time": "08:25:00",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "attendance_id": 8,
+      "member_id": 4,
+      "attendance_date": "2026-11-12T18:30:00.000Z",
+      "check_in_time": "17:15:00",
+      "check_out_time": "18:30:00",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "attendance_id": 9,
+      "member_id": 6,
+      "attendance_date": "2026-11-12T18:30:00.000Z",
+      "check_in_time": "18:00:00",
+      "check_out_time": "19:15:00",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "attendance_id": 10,
+      "member_id": 8,
+      "attendance_date": "2026-11-12T18:30:00.000Z",
+      "check_in_time": "09:00:00",
+      "check_out_time": "10:15:00",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "attendance_id": 11,
+      "member_id": 1,
+      "attendance_date": "2026-11-11T18:30:00.000Z",
+      "check_in_time": "06:40:00",
+      "check_out_time": "08:00:00",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "attendance_id": 12,
+      "member_id": 3,
+      "attendance_date": "2026-11-11T18:30:00.000Z",
+      "check_in_time": "08:05:00",
+      "check_out_time": "09:25:00",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "attendance_id": 13,
+      "member_id": 5,
+      "attendance_date": "2026-11-11T18:30:00.000Z",
+      "check_in_time": "07:35:00",
+      "check_out_time": "08:50:00",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "attendance_id": 14,
+      "member_id": 7,
+      "attendance_date": "2026-11-11T18:30:00.000Z",
+      "check_in_time": "19:00:00",
+      "check_out_time": "20:15:00",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "attendance_id": 15,
+      "member_id": 10,
+      "attendance_date": "2026-11-11T18:30:00.000Z",
+      "check_in_time": "10:00:00",
+      "check_out_time": "11:15:00",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    }
+  ],
+  "exercises": [
+    {
+      "exercise_id": 1,
+      "exercise_name": "Barbell Back Squat",
+      "muscle_group": "Quadriceps & Glutes",
+      "equipment_needed": "Barbell & Squat Rack",
+      "difficulty_level": "Intermediate",
+      "description": "Compound lower body movement building foundational strength and power.",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "exercise_id": 2,
+      "exercise_name": "Flat Barbell Bench Press",
+      "muscle_group": "Chest & Triceps",
+      "equipment_needed": "Barbell & Flat Bench",
+      "difficulty_level": "Intermediate",
+      "description": "Classic upper body horizontal push developing pectoral thickness.",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "exercise_id": 3,
+      "exercise_name": "Conventional Deadlift",
+      "muscle_group": "Hamstrings & Posterior Chain",
+      "equipment_needed": "Barbell & Weight Plates",
+      "difficulty_level": "Advanced",
+      "description": "Full-body sovereign lift targeting back, hips, glutes, and traps.",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "exercise_id": 4,
+      "exercise_name": "Pull-Up",
+      "muscle_group": "Lats & Biceps",
+      "equipment_needed": "Pull-up Bar",
+      "difficulty_level": "Intermediate",
+      "description": "Bodyweight vertical pulling exercise for upper back breadth and grip.",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "exercise_id": 5,
+      "exercise_name": "Overhead Military Press",
+      "muscle_group": "Deltoids & Core",
+      "equipment_needed": "Barbell",
+      "difficulty_level": "Intermediate",
+      "description": "Vertical shoulder press for deltoid strength and scapular stability.",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "exercise_id": 6,
+      "exercise_name": "Dumbbell Walking Lunges",
+      "muscle_group": "Quads, Hamstrings & Glutes",
+      "equipment_needed": "Dumbbells",
+      "difficulty_level": "Beginner",
+      "description": "Unilateral leg conditioning exercise improving balance and hypertrophy.",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "exercise_id": 7,
+      "exercise_name": "Plank Hold",
+      "muscle_group": "Core & Abdominals",
+      "equipment_needed": "Yoga Mat",
+      "difficulty_level": "Beginner",
+      "description": "Isometric core stabilization strengthening the transverse abdominis.",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "exercise_id": 8,
+      "exercise_name": "Incline Dumbbell Press",
+      "muscle_group": "Upper Chest",
+      "equipment_needed": "Adjustable Bench & Dumbbells",
+      "difficulty_level": "Intermediate",
+      "description": "Targets the clavicular head of the pectoralis major.",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "exercise_id": 9,
+      "exercise_name": "Cable Lat Pulldown",
+      "muscle_group": "Latissimus Dorsi",
+      "equipment_needed": "Cable Machine & Lat Bar",
+      "difficulty_level": "Beginner",
+      "description": "Machine-guided vertical pull ideal for building back posture.",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "exercise_id": 10,
+      "exercise_name": "Romanian Deadlift (RDL)",
+      "muscle_group": "Hamstrings & Glutes",
+      "equipment_needed": "Barbell or Dumbbells",
+      "difficulty_level": "Intermediate",
+      "description": "Hip hinge movement loaded eccentric stretch for hamstring flexibility.",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    }
+  ],
+  "workout_plans": [
+    {
+      "workout_plan_id": 1,
+      "trainer_id": 1,
+      "plan_name": "Hypertrophy Beast 4-Day Split",
+      "goal": "Muscle Gain",
+      "difficulty_level": "Intermediate",
+      "duration_weeks": 8,
+      "description": "High volume push-pull-legs and upper/lower hypertrophy progression.",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "workout_plan_id": 2,
+      "trainer_id": 2,
+      "plan_name": "Shred & Tone Fat Furnace",
+      "goal": "Weight Loss",
+      "difficulty_level": "Beginner",
+      "duration_weeks": 6,
+      "description": "Dynamic supersets and metabolic conditioning tailored for sustainable fat loss.",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "workout_plan_id": 3,
+      "trainer_id": 3,
+      "plan_name": "Iron Strong Power 5x5",
+      "goal": "Muscle Gain",
+      "difficulty_level": "Advanced",
+      "duration_weeks": 12,
+      "description": "Heavy compound barbell focus inspired by classic strength periodization.",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "workout_plan_id": 4,
+      "trainer_id": 4,
+      "plan_name": "Functional Mobility & Core Flow",
+      "goal": "Flexibility",
+      "difficulty_level": "Beginner",
+      "duration_weeks": 4,
+      "description": "Full-body joint mobility, core stability, and posture restoration program.",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "workout_plan_id": 5,
+      "trainer_id": 5,
+      "plan_name": "Cardio Blast & Athletic Stamina",
+      "goal": "Endurance",
+      "difficulty_level": "Intermediate",
+      "duration_weeks": 6,
+      "description": "VO2 max conditioning, plyometrics, and aerobic threshold training.",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    }
+  ],
+  "workout_exercises": [
+    {
+      "workout_exercise_id": 1,
+      "workout_plan_id": 1,
+      "exercise_id": 2,
+      "day_of_week": "Monday",
+      "sets": 4,
+      "reps": 10,
+      "rest_seconds": 90
+    },
+    {
+      "workout_exercise_id": 2,
+      "workout_plan_id": 1,
+      "exercise_id": 8,
+      "day_of_week": "Monday",
+      "sets": 3,
+      "reps": 12,
+      "rest_seconds": 60
+    },
+    {
+      "workout_exercise_id": 3,
+      "workout_plan_id": 1,
+      "exercise_id": 5,
+      "day_of_week": "Monday",
+      "sets": 3,
+      "reps": 10,
+      "rest_seconds": 75
+    },
+    {
+      "workout_exercise_id": 4,
+      "workout_plan_id": 1,
+      "exercise_id": 4,
+      "day_of_week": "Wednesday",
+      "sets": 4,
+      "reps": 8,
+      "rest_seconds": 90
+    },
+    {
+      "workout_exercise_id": 5,
+      "workout_plan_id": 1,
+      "exercise_id": 9,
+      "day_of_week": "Wednesday",
+      "sets": 3,
+      "reps": 12,
+      "rest_seconds": 60
+    },
+    {
+      "workout_exercise_id": 6,
+      "workout_plan_id": 1,
+      "exercise_id": 1,
+      "day_of_week": "Friday",
+      "sets": 4,
+      "reps": 10,
+      "rest_seconds": 120
+    },
+    {
+      "workout_exercise_id": 7,
+      "workout_plan_id": 1,
+      "exercise_id": 10,
+      "day_of_week": "Friday",
+      "sets": 3,
+      "reps": 12,
+      "rest_seconds": 90
+    },
+    {
+      "workout_exercise_id": 8,
+      "workout_plan_id": 2,
+      "exercise_id": 6,
+      "day_of_week": "Tuesday",
+      "sets": 3,
+      "reps": 15,
+      "rest_seconds": 45
+    },
+    {
+      "workout_exercise_id": 9,
+      "workout_plan_id": 2,
+      "exercise_id": 7,
+      "day_of_week": "Tuesday",
+      "sets": 4,
+      "reps": 60,
+      "rest_seconds": 45
+    },
+    {
+      "workout_exercise_id": 10,
+      "workout_plan_id": 2,
+      "exercise_id": 4,
+      "day_of_week": "Thursday",
+      "sets": 3,
+      "reps": 10,
+      "rest_seconds": 60
+    },
+    {
+      "workout_exercise_id": 11,
+      "workout_plan_id": 3,
+      "exercise_id": 1,
+      "day_of_week": "Monday",
+      "sets": 5,
+      "reps": 5,
+      "rest_seconds": 180
+    },
+    {
+      "workout_exercise_id": 12,
+      "workout_plan_id": 3,
+      "exercise_id": 2,
+      "day_of_week": "Wednesday",
+      "sets": 5,
+      "reps": 5,
+      "rest_seconds": 180
+    },
+    {
+      "workout_exercise_id": 13,
+      "workout_plan_id": 3,
+      "exercise_id": 3,
+      "day_of_week": "Friday",
+      "sets": 5,
+      "reps": 5,
+      "rest_seconds": 240
+    }
+  ],
+  "fitness_progress": [
+    {
+      "progress_id": 1,
+      "member_id": 1,
+      "recorded_date": "2026-06-13T18:30:00.000Z",
+      "weight_kg": "82.50",
+      "height_cm": "178.00",
+      "bmi": "26.04",
+      "body_fat_percentage": "21.5",
+      "chest_cm": "102.00",
+      "waist_cm": "88.00",
+      "arms_cm": "35.00",
+      "remarks": "Baseline fitness intake assessment. Good muscle mass foundation.",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "progress_id": 2,
+      "member_id": 1,
+      "recorded_date": "2026-07-13T18:30:00.000Z",
+      "weight_kg": "80.20",
+      "height_cm": "178.00",
+      "bmi": "25.31",
+      "body_fat_percentage": "19.8",
+      "chest_cm": "103.50",
+      "waist_cm": "85.00",
+      "arms_cm": "36.00",
+      "remarks": "Down 2.3kg, lost 3cm off waist. Clean diet adherence.",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "progress_id": 3,
+      "member_id": 1,
+      "recorded_date": "2026-09-13T18:30:00.000Z",
+      "weight_kg": "78.50",
+      "height_cm": "178.00",
+      "bmi": "24.78",
+      "body_fat_percentage": "18.0",
+      "chest_cm": "104.50",
+      "waist_cm": "82.50",
+      "arms_cm": "36.50",
+      "remarks": "Achieved target normal BMI range. Noticeable arm definition.",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "progress_id": 4,
+      "member_id": 1,
+      "recorded_date": "2026-11-13T18:30:00.000Z",
+      "weight_kg": "77.00",
+      "height_cm": "178.00",
+      "bmi": "24.30",
+      "body_fat_percentage": "16.5",
+      "chest_cm": "105.00",
+      "waist_cm": "80.50",
+      "arms_cm": "37.00",
+      "remarks": "Excellent strength-to-weight ratio milestone.",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "progress_id": 5,
+      "member_id": 2,
+      "recorded_date": "2026-07-13T18:30:00.000Z",
+      "weight_kg": "68.00",
+      "height_cm": "162.00",
+      "bmi": "25.91",
+      "body_fat_percentage": "28.5",
+      "chest_cm": "92.00",
+      "waist_cm": "78.00",
+      "arms_cm": "28.00",
+      "remarks": "Initial assessment for HIIT and conditioning program.",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "progress_id": 6,
+      "member_id": 2,
+      "recorded_date": "2026-09-13T18:30:00.000Z",
+      "weight_kg": "65.50",
+      "height_cm": "162.00",
+      "bmi": "24.96",
+      "body_fat_percentage": "26.2",
+      "chest_cm": "90.00",
+      "waist_cm": "74.50",
+      "arms_cm": "27.50",
+      "remarks": "Lost 2.5kg. Cardiovascular stamina improved considerably.",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "progress_id": 7,
+      "member_id": 2,
+      "recorded_date": "2026-11-13T18:30:00.000Z",
+      "weight_kg": "63.80",
+      "height_cm": "162.00",
+      "bmi": "24.31",
+      "body_fat_percentage": "24.8",
+      "chest_cm": "89.00",
+      "waist_cm": "72.00",
+      "arms_cm": "27.00",
+      "remarks": "Consistent 4 days/week attendance. Core stability high.",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "progress_id": 8,
+      "member_id": 3,
+      "recorded_date": "2026-09-13T18:30:00.000Z",
+      "weight_kg": "88.00",
+      "height_cm": "182.00",
+      "bmi": "26.57",
+      "body_fat_percentage": "22.0",
+      "chest_cm": "106.00",
+      "waist_cm": "91.00",
+      "arms_cm": "37.00",
+      "remarks": "Starting 5x5 power program with coach Marcus.",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "progress_id": 9,
+      "member_id": 3,
+      "recorded_date": "2026-11-13T18:30:00.000Z",
+      "weight_kg": "89.20",
+      "height_cm": "182.00",
+      "bmi": "26.93",
+      "body_fat_percentage": "20.5",
+      "chest_cm": "109.00",
+      "waist_cm": "90.00",
+      "arms_cm": "38.50",
+      "remarks": "Muscle mass gain phase. Bench press increased to 100kg.",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "progress_id": 10,
+      "member_id": 5,
+      "recorded_date": "2026-09-13T18:30:00.000Z",
+      "weight_kg": "75.00",
+      "height_cm": "175.00",
+      "bmi": "24.49",
+      "body_fat_percentage": "17.5",
+      "chest_cm": "100.00",
+      "waist_cm": "81.00",
+      "arms_cm": "34.00",
+      "remarks": "New enrollment fitness assessment.",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    }
+  ],
+  "payments": [
+    {
+      "payment_id": 1,
+      "membership_id": 1,
+      "member_id": 1,
+      "amount": "13999.00",
+      "payment_date": "2026-05-13T18:30:00.000Z",
+      "payment_method": "UPI",
+      "payment_status": "Completed",
+      "transaction_id": "TXN-1794677563-1001",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "payment_id": 2,
+      "membership_id": 2,
+      "member_id": 2,
+      "amount": "7499.00",
+      "payment_date": "2026-06-13T18:30:00.000Z",
+      "payment_method": "Credit Card",
+      "payment_status": "Completed",
+      "transaction_id": "TXN-1794677563-1002",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "payment_id": 3,
+      "membership_id": 3,
+      "member_id": 3,
+      "amount": "3999.00",
+      "payment_date": "2026-09-13T18:30:00.000Z",
+      "payment_method": "Debit Card",
+      "payment_status": "Completed",
+      "transaction_id": "TXN-1794677563-1003",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "payment_id": 4,
+      "membership_id": 4,
+      "member_id": 4,
+      "amount": "7499.00",
+      "payment_date": "2026-08-13T18:30:00.000Z",
+      "payment_method": "Net Banking",
+      "payment_status": "Completed",
+      "transaction_id": "TXN-1794677563-1004",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "payment_id": 5,
+      "membership_id": 5,
+      "member_id": 5,
+      "amount": "13999.00",
+      "payment_date": "2026-08-13T18:30:00.000Z",
+      "payment_method": "UPI",
+      "payment_status": "Completed",
+      "transaction_id": "TXN-1794677563-1005",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "payment_id": 6,
+      "membership_id": 6,
+      "member_id": 6,
+      "amount": "1500.00",
+      "payment_date": "2026-10-19T18:30:00.000Z",
+      "payment_method": "Cash",
+      "payment_status": "Completed",
+      "transaction_id": "TXN-1794677563-1006",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "payment_id": 7,
+      "membership_id": 7,
+      "member_id": 7,
+      "amount": "3999.00",
+      "payment_date": "2026-09-13T18:30:00.000Z",
+      "payment_method": "UPI",
+      "payment_status": "Completed",
+      "transaction_id": "TXN-1794677563-1007",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "payment_id": 8,
+      "membership_id": 8,
+      "member_id": 8,
+      "amount": "7499.00",
+      "payment_date": "2026-10-13T18:30:00.000Z",
+      "payment_method": "Credit Card",
+      "payment_status": "Completed",
+      "transaction_id": "TXN-1794677563-1008",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "payment_id": 9,
+      "membership_id": 9,
+      "member_id": 9,
+      "amount": "1500.00",
+      "payment_date": "2026-05-13T18:30:00.000Z",
+      "payment_method": "Cash",
+      "payment_status": "Completed",
+      "transaction_id": "TXN-1794677563-1009",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "payment_id": 10,
+      "membership_id": 10,
+      "member_id": 10,
+      "amount": "3999.00",
+      "payment_date": "2026-11-03T18:30:00.000Z",
+      "payment_method": "UPI",
+      "payment_status": "Completed",
+      "transaction_id": "TXN-1794677563-1010",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "payment_id": 11,
+      "membership_id": 6,
+      "member_id": 6,
+      "amount": "1500.00",
+      "payment_date": "2026-11-13T18:30:00.000Z",
+      "payment_method": "UPI",
+      "payment_status": "Pending",
+      "transaction_id": "TXN-1794677563-PEND1",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "payment_id": 12,
+      "membership_id": 1,
+      "member_id": 1,
+      "amount": "1500.00",
+      "payment_date": "2026-11-22T18:30:00.000Z",
+      "payment_method": "UPI",
+      "payment_status": "Completed",
+      "transaction_id": "UPI-FAM-439812763451",
+      "created_at": "2026-11-22T23:26:10.000Z"
+    },
+    {
+      "payment_id": 13,
+      "membership_id": 9,
+      "member_id": 9,
+      "amount": "1499.00",
+      "payment_date": "2026-11-22T18:30:00.000Z",
+      "payment_method": "UPI",
+      "payment_status": "Completed",
+      "transaction_id": "UPI-FAM-82910482719",
+      "created_at": "2026-11-22T23:30:29.000Z"
+    }
+  ],
+  "gym_equipment": [
+    {
+      "equipment_id": 1,
+      "equipment_name": "LifeFitness Commercial Treadmill T5",
+      "category": "Cardio",
+      "purchase_date": "2025-11-13T18:30:00.000Z",
+      "condition_status": "Operational",
+      "last_maintenance_date": "2026-10-13T18:30:00.000Z",
+      "cost": "185000.00",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "equipment_id": 2,
+      "equipment_name": "Matrix Fitness Rower ERG-01",
+      "category": "Cardio",
+      "purchase_date": "2025-11-13T18:30:00.000Z",
+      "condition_status": "Operational",
+      "last_maintenance_date": "2026-09-13T18:30:00.000Z",
+      "cost": "95000.00",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "equipment_id": 3,
+      "equipment_name": "Hammer Strength Olympic Power Rack",
+      "category": "Strength",
+      "purchase_date": "2024-11-13T18:30:00.000Z",
+      "condition_status": "Operational",
+      "last_maintenance_date": "2026-08-13T18:30:00.000Z",
+      "cost": "120000.00",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "equipment_id": 4,
+      "equipment_name": "Eleiko Olympic Barbell Set (20kg + 150kg)",
+      "category": "Free Weights",
+      "purchase_date": "2025-11-13T18:30:00.000Z",
+      "condition_status": "Operational",
+      "last_maintenance_date": "2026-09-13T18:30:00.000Z",
+      "cost": "85000.00",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "equipment_id": 5,
+      "equipment_name": "LifeFitness Dual Adjustable Pulley Cable Machine",
+      "category": "Strength",
+      "purchase_date": "2024-11-13T18:30:00.000Z",
+      "condition_status": "Maintenance Needed",
+      "last_maintenance_date": "2026-06-13T18:30:00.000Z",
+      "cost": "240000.00",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "equipment_id": 6,
+      "equipment_name": "Assault AirBike Pro",
+      "category": "Cardio",
+      "purchase_date": "2025-11-13T18:30:00.000Z",
+      "condition_status": "Operational",
+      "last_maintenance_date": "2026-10-13T18:30:00.000Z",
+      "cost": "68000.00",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "equipment_id": 7,
+      "equipment_name": "Rubber Hex Dumbbell Set (2.5kg - 35kg)",
+      "category": "Free Weights",
+      "purchase_date": "2024-11-13T18:30:00.000Z",
+      "condition_status": "Operational",
+      "last_maintenance_date": "2026-09-13T18:30:00.000Z",
+      "cost": "110000.00",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "equipment_id": 8,
+      "equipment_name": "Precor Elliptical Cross Trainer EFX",
+      "category": "Cardio",
+      "purchase_date": "2025-11-13T18:30:00.000Z",
+      "condition_status": "Under Repair",
+      "last_maintenance_date": "2026-11-03T18:30:00.000Z",
+      "cost": "175000.00",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "equipment_id": 9,
+      "equipment_name": "Leg Press & Hack Squat Combo 45-degree",
+      "category": "Strength",
+      "purchase_date": "2025-11-13T18:30:00.000Z",
+      "condition_status": "Operational",
+      "last_maintenance_date": "2026-10-13T18:30:00.000Z",
+      "cost": "145000.00",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    },
+    {
+      "equipment_id": 10,
+      "equipment_name": "Concept2 SkiErg with Floor Stand",
+      "category": "Functional",
+      "purchase_date": "2025-11-13T18:30:00.000Z",
+      "condition_status": "Operational",
+      "last_maintenance_date": "2026-09-13T18:30:00.000Z",
+      "cost": "92000.00",
+      "created_at": "2026-11-14T12:02:43.000Z"
+    }
+  ]
+}
