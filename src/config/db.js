@@ -18,6 +18,15 @@ const LOCAL_CONFIG = {
     database: 'fittrack_db'
 };
 
+const CLOUD_CONFIG = {
+    host: process.env.DB_HOST || 'localhost',
+    port: Number(process.env.DB_PORT) || 3306,
+    user: process.env.DB_USER || 'root',
+    password: process.env.DB_PASSWORD || '',
+    database: process.env.DB_NAME || 'fittrack_db',
+    ssl: (process.env.DB_SSL === 'true' || (process.env.DB_HOST && process.env.DB_HOST !== 'localhost' && process.env.DB_HOST !== '127.0.0.1')) ? { rejectUnauthorized: false } : undefined
+};
+
 // Create a flexible proxy connection pool that auto-selects or respects .env
 let activePool = null;
 
@@ -28,6 +37,7 @@ function createPoolConfig(cfg) {
         password: cfg.password,
         database: cfg.database,
         port: cfg.port,
+        ssl: cfg.ssl,
         waitForConnections: true,
         connectionLimit: 15,
         queueLimit: 0,
@@ -36,16 +46,20 @@ function createPoolConfig(cfg) {
 }
 
 // Determine default target from .env
-const envPort = Number(process.env.DB_PORT);
-if (envPort === 3306) {
-    activePool = createPoolConfig(LOCAL_CONFIG);
-} else if (envPort === 3307) {
-    activePool = createPoolConfig(DOCKER_CONFIG);
-} else if (process.env.DATABASE_URL) {
+if (process.env.DATABASE_URL) {
     activePool = mysql.createPool(process.env.DATABASE_URL);
+} else if (process.env.DB_HOST && process.env.DB_HOST !== 'localhost' && process.env.DB_HOST !== '127.0.0.1') {
+    activePool = createPoolConfig(CLOUD_CONFIG);
 } else {
-    // Default to Docker 3307 with automatic fallback to Local 3306
-    activePool = createPoolConfig(DOCKER_CONFIG);
+    const envPort = Number(process.env.DB_PORT);
+    if (envPort === 3306) {
+        activePool = createPoolConfig(LOCAL_CONFIG);
+    } else if (envPort === 3307) {
+        activePool = createPoolConfig(DOCKER_CONFIG);
+    } else {
+        // Default to Docker 3307 with automatic fallback to Local 3306
+        activePool = createPoolConfig(DOCKER_CONFIG);
+    }
 }
 
 // Connection test and fallback

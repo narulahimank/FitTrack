@@ -88,32 +88,37 @@ function getLocalIP() {
     return '127.0.0.1';
 }
 
-// Start Server
-const server = app.listen(PORT, '0.0.0.0', async () => {
-    const localIP = getLocalIP();
-    
-    // Verify DB Connection
-    let dbStatus = `MySQL 8 Connected (${DB_NAME})`;
-    let portType = db.activePort === 3307 ? 'Docker MySQL (port 3307)' : 'Native Local MySQL (port 3306)';
-    try {
-        const conn = await db.getConnection();
-        conn.release();
-        dbStatus = `MySQL 8 Connected: ${portType}`;
-    } catch (e) {
-        dbStatus = `MySQL Connection Warning: ${e.message}`;
-    }
+// Export app for serverless deployment (Vercel)
+module.exports = app;
 
-    console.log('\n  \x1b[1m\x1b[32mFITTRACK GYM MANAGEMENT & FITNESS TRACKING SYSTEM\x1b[0m');
-    console.log(`  \x1b[90m${dbStatus}\x1b[0m\n`);
-    console.log(`  \x1b[1m➜\x1b[0m  \x1b[1mLocal:\x1b[0m    \x1b[36mhttp://localhost:${PORT}/\x1b[0m`);
-    console.log(`  \x1b[1m➜\x1b[0m  \x1b[1mNetwork:\x1b[0m  \x1b[36mhttp://${localIP}:${PORT}/\x1b[0m\n`);
-});
+// Start Server locally or in container
+if (process.env.VERCEL !== '1' && require.main === module) {
+    const server = app.listen(PORT, '0.0.0.0', async () => {
+        const localIP = getLocalIP();
+        
+        // Verify DB Connection
+        let dbStatus = `MySQL 8 Connected (${DB_NAME})`;
+        let portType = db.activePort === 3307 ? 'Docker MySQL (port 3307)' : 'Native Local MySQL (port 3306)';
+        try {
+            const conn = await db.getConnection();
+            conn.release();
+            dbStatus = `MySQL 8 Connected: ${portType}`;
+        } catch (e) {
+            dbStatus = `MySQL Connection Warning: ${e.message}`;
+        }
 
-server.on('error', (err) => {
-    if (err.code === 'EADDRINUSE') {
-        console.error(`\n❌ Port ${PORT} is busy. Free it with: fuser -k ${PORT}/tcp or run: PORT=3001 npm run dev\n`);
-    } else {
-        console.error('Server error:', err);
-    }
-    process.exit(1);
-});
+        console.log('\n  \x1b[1m\x1b[32mFITTRACK GYM MANAGEMENT & FITNESS TRACKING SYSTEM\x1b[0m');
+        console.log(`  \x1b[90m${dbStatus}\x1b[0m\n`);
+        console.log(`  \x1b[1m➜\x1b[0m  \x1b[1mLocal:\x1b[0m    \x1b[36mhttp://localhost:${PORT}/\x1b[0m`);
+        console.log(`  \x1b[1m➜\x1b[0m  \x1b[1mNetwork:\x1b[0m  \x1b[36mhttp://${localIP}:${PORT}/\x1b[0m\n`);
+    });
+
+    server.on('error', (err) => {
+        if (err.code === 'EADDRINUSE') {
+            console.error(`\n❌ Port ${PORT} is busy. Free it with: fuser -k ${PORT}/tcp or run: PORT=3001 npm run dev\n`);
+        } else {
+            console.error('Server error:', err);
+        }
+        process.exit(1);
+    });
+}
