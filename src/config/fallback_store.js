@@ -106,35 +106,35 @@ function queryFallback(sql, params = []) {
     // -------------------------------------------------------------------------
     // DASHBOARD CHARTS QUERIES
     // -------------------------------------------------------------------------
-    if (s.includes('date_format(payment_date') || (s.includes('payments') && s.includes('group by') && s.includes('month'))) {
+    if (s.includes('vw_monthly_revenue_summary') || s.includes('revenue_month')) {
         return [[
-            { month_label: 'Jun 2026', revenue: 15499 },
-            { month_label: 'Jul 2026', revenue: 21998 },
-            { month_label: 'Aug 2026', revenue: 27999 },
-            { month_label: 'Sep 2026', revenue: 22498 },
-            { month_label: 'Oct 2026', revenue: 31998 },
-            { month_label: 'Nov 2026', revenue: 28497 }
+            { revenue_month: '2026-06', total_collected: 18500, total_pending: 1500 },
+            { revenue_month: '2026-07', total_collected: 23999, total_pending: 0 },
+            { revenue_month: '2026-08', total_collected: 31998, total_pending: 0 },
+            { revenue_month: '2026-09', total_collected: 27999, total_pending: 0 },
+            { revenue_month: '2026-10', total_collected: 34500, total_pending: 1500 },
+            { revenue_month: '2026-11', total_collected: 29496, total_pending: 1500 }
         ]];
     }
 
-    if (s.includes('from membership_plans mp') && s.includes('active_count')) {
+    if (s.includes('subscription_count') || (s.includes('from membership_plans') && s.includes('group by'))) {
         return [[
-            { plan_name: 'Platinum Elite Annual', active_count: 4 },
-            { plan_name: 'Gold Pro Athlete', active_count: 2 },
-            { plan_name: 'Silver Fitness', active_count: 2 },
-            { plan_name: 'Bronze Starter', active_count: 1 }
+            { plan_name: 'Platinum Elite Annual', subscription_count: 5 },
+            { plan_name: 'Gold Pro Athlete', subscription_count: 3 },
+            { plan_name: 'Silver Fitness', subscription_count: 2 },
+            { plan_name: 'Bronze Starter', subscription_count: 1 }
         ]];
     }
 
-    if (s.includes('from attendance') && s.includes('check_ins')) {
+    if (s.includes('from attendance') && (s.includes('visits') || s.includes('interval 6 day'))) {
         return [[
-            { date_label: '17 Nov', check_ins: 14 },
-            { date_label: '18 Nov', check_ins: 19 },
-            { date_label: '19 Nov', check_ins: 16 },
-            { date_label: '20 Nov', check_ins: 22 },
-            { date_label: '21 Nov', check_ins: 18 },
-            { date_label: '22 Nov', check_ins: 15 },
-            { date_label: '23 Nov', check_ins: 12 }
+            { label: 'Tue (17 Nov)', attendance_date: '2026-11-17', visits: 14 },
+            { label: 'Wed (18 Nov)', attendance_date: '2026-11-18', visits: 18 },
+            { label: 'Thu (19 Nov)', attendance_date: '2026-11-19', visits: 16 },
+            { label: 'Fri (20 Nov)', attendance_date: '2026-11-20', visits: 21 },
+            { label: 'Sat (21 Nov)', attendance_date: '2026-11-21', visits: 19 },
+            { label: 'Sun (22 Nov)', attendance_date: '2026-11-22', visits: 15 },
+            { label: 'Mon (23 Nov)', attendance_date: '2026-11-23', visits: 12 }
         ]];
     }
 
