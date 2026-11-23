@@ -111,7 +111,7 @@
                     </div>
                     <button class="btn btn-secondary" id="topUpiQrBtn">
                         <i class="fa-solid fa-qrcode text-emerald"></i>
-                        <span>Owner UPI QR</span>
+                        <span>UPI Scanner / QR</span>
                     </button>
                     <button class="btn btn-primary" id="topRegisterBtn">
                         <i class="fa-solid fa-user-plus"></i>
@@ -703,23 +703,33 @@
                 <!-- TAB 9: PAYMENTS & BILLING -->
                 <section class="tab-pane" id="pane-payments">
                     <!-- Owner UPI QR Quick Terminal Card -->
-                    <div class="card mb-4" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(6, 182, 212, 0.06) 100%); border: 1px solid rgba(16, 185, 129, 0.35);">
+                    <div class="card mb-4" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(6, 182, 212, 0.08) 100%); border: 1px solid rgba(16, 185, 129, 0.4);">
                         <div class="card-body" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
-                            <div style="display: flex; align-items: center; gap: 16px;">
-                                <div style="width: 56px; height: 56px; border-radius: 12px; background: rgba(16, 185, 129, 0.2); display: flex; align-items: center; justify-content: center; font-size: 28px; color: #10b981; box-shadow: 0 0 15px rgba(16, 185, 129, 0.25);">
-                                    <i class="fa-solid fa-qrcode"></i>
+                            <div style="display: flex; align-items: center; gap: 20px;">
+                                <!-- Visible QR Scanner Code Box directly in view -->
+                                <div style="background: #ffffff; padding: 8px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); text-align: center; cursor: pointer; min-width: 120px;" onclick="App.openUpiModal({ custom: true })" title="Click to enlarge or verify transaction">
+                                    <img id="inlineOwnerQrImage" src="" alt="Owner UPI QR Scanner" style="width: 110px; height: 110px; display: block; object-fit: contain; margin: 0 auto;">
+                                    <span style="font-size: 10px; font-weight: 700; color: #0f172a; display: block; margin-top: 4px; letter-spacing: 0.5px;">SCANNER (8168567208@fam)</span>
                                 </div>
                                 <div>
                                     <div style="display: flex; align-items: center; gap: 10px;">
-                                        <h3 style="font-size: 18px; font-weight: 700;">Owner UPI QR Payment Terminal</h3>
+                                        <h3 style="font-size: 19px; font-weight: 700;">Owner UPI QR Payment Terminal</h3>
                                         <span class="badge badge-emerald"><i class="fa-solid fa-circle-check"></i> FamPay Verified</span>
                                     </div>
                                     <p class="text-muted text-sm mt-1">
-                                        Scan & Pay directly to Gym Owner VPA: <strong class="text-cyan font-mono" style="font-size: 14px;">8168567208@fam</strong>
+                                        Scan directly via GPay / PhonePe / FamPay to Gym Owner VPA:
+                                        <strong class="text-cyan font-mono" style="font-size: 14.5px; margin-left: 4px;">8168567208@fam</strong>
                                         <button class="btn btn-sm btn-secondary" style="margin-left: 8px; padding: 2px 8px;" onclick="App.copyOwnerUpiId()" title="Copy UPI ID">
                                             <i class="fa-regular fa-copy"></i> Copy
                                         </button>
                                     </p>
+                                    <div style="display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap;">
+                                        <span class="badge badge-cyan" style="font-size: 11px;">GPay</span>
+                                        <span class="badge badge-purple" style="font-size: 11px;">PhonePe</span>
+                                        <span class="badge badge-emerald" style="font-size: 11px;">FamPay</span>
+                                        <span class="badge badge-amber" style="font-size: 11px;">Paytm</span>
+                                        <span class="badge badge-blue" style="font-size: 11px;">BHIM</span>
+                                    </div>
                                 </div>
                             </div>
                             <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
@@ -730,10 +740,10 @@
                                     <i class="fa-solid fa-qrcode"></i> Scan ₹3,999
                                 </button>
                                 <button class="btn btn-secondary" onclick="App.openUpiModal({ custom: true })">
-                                    <i class="fa-solid fa-calculator"></i> Custom Scan
+                                    <i class="fa-solid fa-expand"></i> Enlarge Scanner
                                 </button>
                                 <button class="btn btn-secondary" onclick="App.openCameraScanner()">
-                                    <i class="fa-solid fa-camera"></i> Live Scanner
+                                    <i class="fa-solid fa-camera"></i> Live Camera
                                 </button>
                             </div>
                         </div>

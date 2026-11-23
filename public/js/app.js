@@ -17,6 +17,7 @@ const App = {
         // Initial Data Load
         this.loadDashboardData();
         this.loadMembersDropdownData();
+        this.fetchAndRenderUpiQr(1500, 'FitTrack Gym Fee');
     },
 
     // --------------------------------------------------------------------------
@@ -1685,18 +1686,30 @@ const App = {
             if (amountDisplay) amountDisplay.textContent = amtFormatted;
 
             const res = await fetch(`/api/payments/upi-qr?amount=${encodeURIComponent(amtVal)}&note=${encodeURIComponent(note || 'FitTrack Gym Fee')}`);
-            const data = await res.json();
-            if (data.success) {
+            const json = await res.json();
+            if (json.success && json.data) {
+                const qrUrl = json.data.qr_code_url || json.data.qrCodeDataUrl;
+                const upiStr = json.data.upi_string || json.data.intentUrl;
+
                 const qrImg = document.getElementById('upiModalQrImage');
-                if (qrImg) qrImg.src = data.qrCodeDataUrl;
+                if (qrImg && qrUrl) qrImg.src = qrUrl;
+
+                const inlineQrImg = document.getElementById('inlineOwnerQrImage');
+                if (inlineQrImg && qrUrl) inlineQrImg.src = qrUrl;
 
                 const mobileLink = document.getElementById('upiDirectMobileLink');
-                if (mobileLink) mobileLink.href = data.intentUrl;
+                if (mobileLink && upiStr) mobileLink.href = upiStr;
             }
         } catch (err) {
             console.error('Failed to load UPI QR:', err);
             this.showToast('Could not generate UPI QR Code', 'error');
         }
+    },
+
+    openCameraScanner() {
+        this.openUpiModal({ custom: true });
+        this.switchUpiModalTab('scanner');
+        this.startCameraScanning();
     },
 
     copyOwnerUpiId() {

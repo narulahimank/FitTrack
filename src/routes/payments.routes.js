@@ -37,7 +37,9 @@ router.get('/upi-qr', async (req, res) => {
                 currency: 'INR',
                 note: txnNote,
                 upi_string: upiString,
+                intentUrl: upiString,
                 qr_code_url: qrCodeDataUrl,
+                qrCodeDataUrl: qrCodeDataUrl,
                 member_id: member_id || null,
                 membership_id: membership_id || null
             }
